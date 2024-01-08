@@ -16,6 +16,23 @@ class hero_component_Button extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
+    static get observedAttributes() {
+        return ['text']; // 관찰할 속성 지정
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'text') {
+            this.buttonText = newValue;
+            this.updateButtonText();
+        }
+    }
+
+    updateButtonText() {
+        if (this.button) {
+            this.button.textContent = this.buttonText;
+        }
+    }
+
     connectedCallback(){
         let text = this.getAttribute('text');
         let back_color = this.getAttribute('back-color');
@@ -42,6 +59,8 @@ class hero_component_Button extends HTMLElement {
                 </style>
                 <button>${text}</button>
             `;
+        this.button = this.shadowRoot.querySelector('button');
+        this.updateButtonText();
     }
 }
 

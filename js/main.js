@@ -31,7 +31,10 @@ const mode_btn = document.querySelector("hero-button");
 const container = document.querySelector(".container");
 
 mode_btn.addEventListener("click", () => {
-    container.classList.toggle("dark-mode")
+    container.classList.toggle("dark-mode");
+    mode_btn.setAttribute("text", container.classList.contains("dark-mode") ? "LIGHT MODE" : "DARK MODE");
+    document.querySelector(".sub_header_con").style.background = "var(--color-natural-black-100)";
+    document.querySelector(".logo").children[0].children[0].src = "https://image.donga.com/pc/2022/images/common/btn_donga05.png";
 })
 
 // 문서 내용 ArchieML로 가져오기
