@@ -1,0 +1,233 @@
+:root {
+ --color-primary-cyan: #008689;
+ --color-secondary-blue: #F0F5FC;
+ --color-secondary-cyan: #F2F9F9;
+ --color-secondary-blue: #F0F5FC;
+ --color-neutral-black-100: #000000;
+ --color-neutral-gray1-100: #111111;
+ --color-neutral-black-75: #000000BF;
+ --color-neutral-gray2: #5A5A5A;
+ --color-neutral-black-50: #00000080;
+ --color-neutral-gray3: #888888;
+ --color-neutral-gray1-50: #11111180;
+ --color-neutral-gray4: #E5E5E5;
+ --color-neutral-white-100: #FFFFFF;
+ --color-neutral-white-75: #FFFFFFBF;
+ --color-neutral-white-50: #FFFFFF80;
+}
+
+html {width: 100%; height:100%;} 
+body {position:relative; width: 100%; height:100%;} 
+
+/* 추가 */
+body #wrap {width: 100%;}
+
+body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';}
+
+.section{width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; gap: 30px;}
+.container.dark-mode .section{background-color: var(--color-neutral-black-100); width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; gap: 30px;}
+/* 추가 */
+
+/* header */
+#sub_header {position: fixed; display: block !important; height: 60px;}
+#sub_header .sub_header_con{height: 60px; display: flex; justify-content: center; align-items: center;}
+#sub_header .donga_logo {left: 40px; margin-left: 0;}
+#sub_header .hero_contents_logo {width: 126px; position: absolute; top: 12px; z-index: 1;}
+#sub_header .right_box {top: auto;}
+#sub_header .right_box .btn_share02 {background-image: url(../images/share_icon.svg); width: 24px; height: 24px;}
+#sub_header .right_box .btn_reply {background-image: url(../images/comment_icon.svg); width: 24px; height: 24px; margin-left: 24px;}
+.bar_progress {position: fixed; top: 0; left: 0; height: 60px; border-bottom: 2px solid #231f20; background: #f8f8f8;} 
+
+/* BYLINE */
+.byline {position: relative; width: 100%; padding: 170px calc((100% - 1280px) / 2 + 95px) 0px calc((100% - 1280px) / 2 + 95px); box-sizing: border-box; color: var(--color-neutral-gray1-100); background: var(--color-neutral-white-100); border-top: 1px solid #3d3d3d; font-family: Inter, "Spoqa Han Sans Neo", "sans-serif";} 
+.byline .byline_title { font-weight: 700; line-height: 150%; font-size: 16px; } 
+.byline .byline_text { line-height: 150%; font-size: 16px; margin: 8px 0 0 0; width: 640px; letter-spacing: -0.32px; } 
+.byline .make_list { margin: 32px 0 0 0; width: 60%; display: flex; align-items: flex-start; flex-direction: column; } 
+.byline .make_list li { margin-bottom: 8px; font-size: 16px; line-height: 150%; position: relative; } 
+.byline .make_list li span { text-align: center; }
+.byline .make_list li a { transition: all 0.5s; }
+.byline .make_list li a:hover { color: #969696 !important; } 
+.byline .make_list li .bold { font-size: 16px; font-weight: bold; line-height: 150%; width: 150px; display: inline-block; text-align: left; } 
+.byline .make_list li .txt_bar { display: inline-block; margin: 0 10px 0 9px; color: #dadada; font-size: 15px; vertical-align: top; } 
+.byline .link_wrap_title { font-weight: 700; line-height: 140%; margin: 82px 0 0 0; font-size: 22px; border-bottom: 2px solid var(--color-neutral-black-50); padding: 0 0 8px 0; } 
+.byline .link_wrap { display: flex; padding: 32px 0 120px 0; gap: 32px; justify-content: space-between; } 
+.byline .link_wrap .link_to_news { position: relative; width: 33%; } 
+.byline .link_wrap .link_to_news .link_wrap_text {line-height: 150%; font-size: 16px; } 
+.byline .link_wrap .link_to_news .link_wrap_text .link_to_paper {color: var(--color-primary-cyan); font-weight: 700; text-decoration: underline; } 
+.byline .link_wrap .link_to_news .link_img {position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; border: 2px solid var(--color-neutral-gray4); border-radius: 2px; } 
+.byline .link_wrap .link_to_news .link_img::hover {color: var(--color-neutral-black-100) !important; } 
+.byline .link_wrap .link_to_news .link_img.present_news {pointer-events: none; border: var(--color-primary-cyan) 2px solid;} 
+.byline .link_wrap .link_to_news .link_img.present_news img { filter: brightness(0.3); z-index: 0;}
+.byline .link_wrap .link_to_news .link_img:hover::after {color: var(--color-neutral-black-100) !important; } 
+.byline .link_wrap .link_to_news .link_img::before {content: attr(data-content); z-index: 1; font-size: 16px; color: var(--color-neutral-white-100); position: absolute;} 
+.byline .link_wrap .link_to_news .link_img::after {content: "인터랙티브"; font-size: 16px; background-color: var(--color-neutral-white-100); position: absolute; right: 0; bottom: 0; border-radius: 2px 0 0 0; font-weight: 700; padding: 6px 8px; } 
+.byline .link_wrap .link_to_news .link_img img {width: 100%; height: auto;}
+.byline .link_wrap .link_to_news .link_title {font-weight: 700; font-size: 18px; margin: 16px 0 0 0; line-height: 150%;} 
+.byline .link_wrap .link_to_news .link_title.present_news { opacity: 0.4; } 
+#footer img { width: unset; vertical-align: initial; } 
+.bottom_wrap { width: 100%; background: #ffffff; position: relative; } 
+#the_original, #footer_wrap { position: relative; background: #ffffff; } 
+
+/* 공유창 */
+#shareLayer {position:fixed; top:76px; opacity:0.9; right:40px; width: 360px; height: 180px; border-radius: 2px; padding: 20px; box-shadow: 0px 2px 14px 0px #00000026;}
+#shareLayer .title {padding: 0; font-size: 17px; font-weight: 700; line-height: 170%; text-align: left;}
+#shareLayer .btn_close {top: 22px; right: 20px; width: 15px; height: 15px; background-size: contain;}
+.icon_comm01 {background: url(https://image.donga.com/m/2022/images/common/icon_comm01.png) no-repeat 0 0; background-size: 150px 150px; font-size: 0; color: transparent;} 
+#shareLayer .share_list {overflow: visible; margin-top: 24px; padding: 0; display: flex; justify-content: space-between; align-items: center;}
+#shareLayer .share_list li {margin: 0; float: none; width: 60px; text-align: center; color: var(--color-neutral-gray1-100); font-size: 13px; line-height: 170%; font-weight: 500;}
+#shareLayer .share_list li a span {border: 1px solid var(--color-neutral-gray4); border-radius: 2px; height: 60px; margin-bottom: 6.5px;}
+#shareLayer .share_list li:nth-child(1) a span {background-image: url(../images/facebook_icon.svg); background-size: 30px 30px; background-position: center;}
+#shareLayer .share_list li:nth-child(2) a span {background-image: url(../images/x_icon.svg); background-size: 30px 30px; background-position: center;}
+#shareLayer .share_list li:nth-child(3) a span {background-image: url(../images/kakao_icon.svg); background-size: 30px 30px; background-position: center;}
+#shareLayer .share_list li a .icon_line {background-position: 0 -81px;} 
+#shareLayer .share_list li.url {margin: 0; padding: 0;}
+#shareLayer .share_list li.url .btn_copyurl {border: 1px solid var(--color-neutral-gray4); width: 60px; height: 60px; border-radius: 0; vertical-align: inherit; background-color: var(--color-neutral-white-100); box-sizing: border-box; background-image: url(../images/Link_copy_icon.svg); background-repeat: no-repeat; background-position: center; background-size: 30px;}
+#shareLayer .share_list li.url .url_inp {position: absolute; width: 0; opacity: 0;}
+#shareLayer .share_list li.url .txt {bottom: -76px; left: -208px; background-color: var(--color-neutral-white-100); width: 240px; height: 40px; border: none; border-radius: 4px; padding: 6px 24px; box-shadow: 0px 2px 14px 0px #00000026; font-size: 18px; line-height: 150%; font-weight: 500; color: var(--color-neutral-black-100); box-sizing: border-box;}
+#replyLayerPopup{display:none;}
+
+/*The original*/
+#the_original {width: calc(100% - 60px);}
+#the_original .theoriginal_cont .tit_cont { padding-bottom: 8px; margin-bottom: 32px; border-bottom: 2px solid var(--color-neutral-black-50);}
+#the_original .theoriginal_cont .tit_cont .tit{ font-size: 22px; line-height: 180%; font-weight: 700; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';}
+#the_original .theoriginal_cont .tit_cont .btn_more{ font-weight: 700; font-size: 18px; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif'; border: 1px solid var(--color-neutral-black-100); padding: 3px 10px; line-height: 180%; background: none}
+#the_original .theoriginal_cont .tit_cont .btn_more img{ width: 26px; }
+#the_original .theoriginal_cont .theoriginal_story { overflow: visible; display: flex; justify-content: space-between; align-items: flex-start; gap: 30px;}
+#the_original .theoriginal_cont .theoriginal_story li {float: none; margin-left: 0; width: 100%;}
+#the_original .theoriginal_cont .theoriginal_story li a { width: 100%; }
+#the_original .theoriginal_cont .theoriginal_story li a .thumb img {border: 2px solid var(--color-neutral-gray4); width: 100%; height: auto;}
+#the_original .theoriginal_cont .theoriginal_story li a .cont_info {width: 100%;}
+#the_original .theoriginal_cont .theoriginal_story li a .cont_info .tit {padding-top: 16px; font-size: 18px; line-height: 180%; font-weight: 700; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif'; color: var(--color-neutral-gray1-100); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;}
+#the_original .theoriginal_cont .theoriginal_story li a .cont_info .txt {padding-top: 8px; font-size: 16px; line-height: 150%; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif'; color: var(--color-neutral-gray2); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;}
+
+/* footer */
+.letter_cont { display: table; width: 100%; box-sizing: border-box; border-bottom: 1px solid #000; } 
+.letter_cont a { display: table-cell; width: 33.33%; height: 50px; background: #231f20; font-size: 14px; color: #fff; text-align: center; line-height: 50px; } 
+.letter_cont a { border-right: 1px solid #656363; } 
+.letter_cont a:last-child { border-right: 0; } 
+.letter_cont a .icon_letter { display: inline-block; width: 19px; height: 12px; margin-right: 5px; background-position: -30px -30px; } 
+.letter_cont a .icon_tip { display: inline-block; width: 17px; height: 15px; margin-right: 4px; background-position: -61px -30px; vertical-align: middle; } 
+#the_original_m, #footer_m { display: none; } 
+
+@media all and (max-width: 1280px) {
+ .byline { padding: 170px 95px 0 95px; } 
+} 
+
+@media all and (max-width: 1200px) { 
+ .donga_media .media_cont { width: 870px; } 
+ .donga_media .alim_msg { width: 258px; }
+ .donga_media .alim_msg .dongagroup_layer { width: 242px; } 
+ .donga_media .family_site { width: 208px; } 
+ .donga_media .family_site .family_layer { width: 192px; } 
+ #sitemap { width: 870px; } 
+ #sitemap .sitemap_box dl { width: 108px; } 
+ #sitemap .sitemap_box dl dt, #sitemap .sitemap_box dl dd a, #sitemap .sitemap_box dl dt a { font-size: 13px; } 
+ #footer .footerBox { width: 870px;} 
+} 
+
+@media all and (max-width: 1024px) {
+ .byline .link_wrap { flex-wrap: wrap; } 
+ .byline .link_wrap .link_to_news { width: 45%; } 
+ .byline .link_wrap .link_to_news:nth-child(1) { width: auto; } 
+} 
+
+@media all and (max-width: 876px){
+ #shareLayer {transform: translate(-50%,-50%); top: 50%; left: 50%; opacity:1; width: 318px; height: 300px; z-index:105;} 
+ #shareLayer .title {padding: 12px 0 8px;} 
+ #shareLayer .share_list li {width: 54px; margin: 21px 16px 0;} 
+ #shareLayer .share_list li a span {width: 54px; height: 54px; background: url(https://image.donga.com/m/2022/images/common/icon_sns.png) no-repeat 0 0; background-size: 231px 125px;} 
+ #shareLayer .share_list li a .icon_twitter {background-position: -88px 0;} 
+ #shareLayer .share_list li a .icon_kakaotalk {background-position: -176px 0;} 
+ #shareLayer .share_list li a .icon_kakaostory {background-position: -88px -71px;} 
+ #shareLayer .share_list li a .icon_line {background-position: 0 -71px;} 
+ #shareLayer .share_list li.url {width: auto; margin: 0 0 0 9px; padding-top: 30px;} 
+ #shareLayer .share_list li.url .url_inp {width: 161px; height: 36px; padding: 0 10px; border-top-left-radius: 4px; border-bottom-left-radius: 4px;} 
+ #shareLayer .share_list li.url .btn_copyurl {width: 65px; height: 36px; border-top-right-radius: 4px; border-bottom-right-radius: 4px;} 
+ #shareLayer .btn_close {top: 19px; right: 19px; width: 18px; height: 17px; background: url(https://image.donga.com/m/2022/images/common/icon_comm01.png) no-repeat 0 0; background-size: 150px 150px; background-position: 0 -81px;} 
+ .m_shareBack {display:none; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgb(38, 43, 49); opacity: 0.7; z-index:104;} 
+ .byline { padding: 170px 16px 0 16px;} 
+ .byline .make_list {width: auto;} 
+ .byline .make_list li { font-size: 16px; width: 100%;} 
+ .byline .make_list li span { text-align: left; width: calc(100% - 150px); display: inline-block; line-height: 150%; } 
+ .byline .make_list li .bold { vertical-align: top; } 
+ .byline .byline_text { width: auto; } 
+ .byline .link_wrap_title { margin: 64px 0 0 0; padding: 0 0 11px 0; } 
+ #footer_wrap { display: none; } 
+ #footer_m { display: block; } 
+
+ #sub_header {height: 50px;}
+ #sub_header .sub_header_con{height: 50px;}
+ #sub_header .donga_logo {width: 65px; left: 16px;}
+ #sub_header .donga_logo .logo a img {width: 65px; height: auto;}
+ #sub_header .hero_contents_logo {width: 80px; top: 15px;}
+ #sub_header .right_box {right: 16px;}
+ .bar_progress {height: 50px;}
+ #replyLayerPopup {width:100%;} 
+ #replyLayerPopup .reply_top_wrap {width:100%; right:0;} 
+ #replyLayerPopup .reply_box {margin-top:10px;} 
+ #replyLayerPopup .reply_box .reply_top {margin:0; padding: 0 15px; height: 55px; line-height: 55px; font-size: 17px; color: #231f20; letter-spacing: -0.5px; border-bottom: 1px solid #eef1f1;} 
+ .reply_box .reply_top .title,
+ .reply_box .reply_top .txt {font-size: 17px;}
+
+ #replyLayerPopup .reply_box #spinTopLayer {margin: 44px 0 0; padding-top:0;} 
+ #replyLayerPopup .reply_layer_con {width:100%;} 
+ #replyLayerPopup .reply_layer_con .layer_close {top: 19px; right: 19px; width: 18px; height: 17px; background-position: 0 -81px; font-size: 0; color: transparent; background: url('https://image.donga.com/m/2022/images/common/icon_comm01.png') no-repeat 0 -30px; background-size: 150px 150px;} 
+ #replyLayerPopup #spinTopLayer .spinTopLayerList {padding: 0 15px;} 
+ #spinTopLayer .spinTopLayerWrite {padding-right: 22px; margin-bottom:0px; overflow: hidden; position: relative; clear: both;} 
+ #spinTopLayer .spinTopLayerWrite textarea {width: 100%; resize: none; border: 1px solid #c7c7c7; font-family: "돋움", Dotum; height: 71px; padding: 13px 10px; font-size: 12px; margin: 0; border-radius: 0; color: #252525; line-height: 19px; overflow: auto; ime-mode: active;} 
+ #replyLayerPopup #spinTopLayer .spinTopLayerWriteBox {padding: 30px 15px 31px; margin-bottom:0;} 
+ #spinTopLayer .spinTopLayerWrite .spinTopLayerWriteButton {position:initial; float: right; margin: 8px -22px 0 0; cursor: pointer; display: inline-block; color: transparent; background: url(https://image.donga.com/donga/m/images/donga_sns_reply_m/btn_submit01.png) 0 0; width: 74px; height: 34px; padding: 0; border: 0 none; text-indent: -9999px; overflow: hidden; background-size: cover;} 
+ #spinTopLayer .spinTopLayerWrite .contextsize {position:initial; float: left; margin-top: 5px; font-size: 12px; color: #949494;} 
+
+ /* The original */
+ #the_original {width: calc(100% - 32px); padding-top: 0;}
+ #the_original .theoriginal_cont .tit_cont { padding-bottom: 24px; position: inherit;}
+ #the_original .theoriginal_cont .tit_cont .btn_more {display: flex; justify-content: center; align-items: center; right: 50%; transform: translateX(50%); width: 100%; bottom: 30px; padding: 16.5px 0; border: 2px solid var(--color-neutral-black-50); box-sizing: border-box;}
+ #the_original .theoriginal_cont .theoriginal_story{ flex-direction: column; }
+ #the_original .theoriginal_cont .theoriginal_story li { width: 100%; }
+ #the_original .theoriginal_cont .theoriginal_story li a{ display: flex; justify-content: flex-start; align-items: center; gap: 15px; }
+ #the_original .theoriginal_cont .theoriginal_story li a .thumb img {height: 65px; width: auto;}
+ #the_original .theoriginal_cont .theoriginal_story li a .cont_info .tit {font-size: 16px; padding-top: 0;}
+ #the_original .theoriginal_cont .theoriginal_story li a .cont_info .txt {font-size: 13px; padding-top: 2px; -webkit-line-clamp: 2;}
+
+ /* footer */
+ .fix_footer { position: fixed !important; left: 0; bottom: 0; width: 100%; z-index: 10000000; } 
+ .fix_footer .sns_area { display: none; } 
+ .fix_footer .person_info { height: auto !important; padding: 19px 0 !important; } 
+ #wrap #footer_m { clear: both; position: relative; height: auto; line-height: 1.4; background: #fff; text-align: left; } 
+ .letter_cont { display: table; width: 100%; box-sizing: border-box; border-bottom: 1px solid #000; } 
+ .letter_cont a { display: table-cell; width: 33.33%; height: 50px; background: #231f20; font-size: 14px; color: #fff; text-align: center; line-height: 50px; } 
+ .letter_cont a { border-right: 1px solid #656363; } 
+ .letter_cont a:last-child { border-right: 0; } 
+ .letter_cont a .icon_letter { display: inline-block; width: 19px; height: 12px; margin-right: 5px; background-position: -30px -30px; } 
+ .letter_cont a .icon_tip { display: inline-block; width: 17px; height: 15px; margin-right: 4px; background-position: -61px -30px; vertical-align: middle; } 
+ #footer_m .site_map .map_cont .tit { display: block; font-size: 18px; color: #333; } 
+ #footer_m .sns_area { padding: 30px 30px 34px 30px; background: #fff; border-bottom: 1px solid #e2e2e2; text-align: center; } 
+ #footer_m .sns_area .txt { display: inline-block; font-size: 14px; color: #242424; } 
+ #footer_m .sns_area .sns_list { overflow: hidden; display: table; width: 100%; margin: 0 auto; padding: 27px 0 0 0; } 
+ #footer_m .sns_area .sns_list li { display: table-cell; width: 20%; height: 40px; } 
+ #footer_m .sns_area .sns_list li a {display: block; width: 40px; height: 40px; margin: 0 auto; background: url("https://image.donga.com/m/2022/images/common/footer_share01.png") no-repeat 0 0; background-size: 321px 40px; font-size: 0; color: transparent;} 
+ #footer_m .sns_area .sns_list li .btn_youtube { background-position: 0 0; } 
+ #footer_m .sns_area .sns_list li .btn_facebook { background-position: -56px 0; } 
+ #footer_m .sns_area .sns_list li .btn_naver { background-position: -112px 0; } 
+ #footer_m .sns_area .sns_list li .btn_twitter { background-position: -169px 0; } 
+ #footer_m .sns_area .sns_list li .btn_kakao { background-position: -225px 0; } 
+ #footer_m .sns_area .sns_list li .btn_donga { background-position: -281px 0; } 
+ #footer_m .person_info { height: 65px; padding: 30px 0 0 0; text-align: center; background: #f8f8f8; font-size: 13px; color: #6c737d; } 
+ #footer_m .person_info a { display: inline-block; } 
+ #footer_m .person_info a.term02 { font-weight: bold; color: #6c7385; } 
+ #footer_m .person_info a:after { content: "|"; display: inline-block; padding: 0 8px; color: #b2b3b5; font-weight: normal; } 
+ #footer_m .person_info a.term02:nth-child(3):after {content: "";} 
+} 
+
+@media all and (max-width: 480px) {
+ .byline .link_wrap { flex-direction: column; gap: 30px; flex-wrap: nowrap;} 
+ .byline .link_wrap .link_to_news { width: auto; } 
+ .byline .link_wrap .link_to_news .link_wrap_text { font-size: 16px;} 
+ .byline .link_wrap .link_to_news .link_img {height: auto; } 
+ .byline .link_wrap .link_to_news .link_img::after { font-size: 13px; padding: 6px 8px;} 
+ .byline .link_wrap .link_to_news .link_title {margin: 14px 0 0 0;}
+
+ #the_original .theoriginal_cont .theoriginal_story li a .cont_info .txt { display: none; }
+ #the_original .theoriginal_cont .theoriginal_story li a {align-items: flex-start;}
+} 
