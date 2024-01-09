@@ -4,6 +4,33 @@ class hero_component_ScrollBox extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
+    static get observedAttributes() {
+        return ['color', 'back-color']; // 관찰할 속성 지정
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'color') {
+            this.textColor = newValue;
+            this.updateTextColor();
+        }
+        else if (name === 'back-color') {
+            this.backColor = newValue;
+            this.updateBackColor();
+        }
+    }
+
+    updateTextColor() {
+        if (this.p) {
+            this.p.style.color = this.textColor;
+        }
+    }
+
+    updateBackColor() {
+        if (this.p) {
+            this.p.style.backgroundColor = this.backColor;
+        }
+    }
+
     connectedCallback(){
         let text = this.getAttribute('text').replace(/(\r\n|\n|\r)/gm, "<br>");
         let color = this.getAttribute('color');
@@ -35,6 +62,9 @@ class hero_component_ScrollBox extends HTMLElement {
                 </style>
                 <p>${text}</p>
             `;
+        this.p = this.shadowRoot.querySelector('p');
+        this.updateTextColor();
+        this.updateBackColor();
     }
 }
 

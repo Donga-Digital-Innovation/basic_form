@@ -28,13 +28,82 @@ const mouseMove = !isMobile ? "mousemove" : "touchmove";
 const mouseUp = !isMobile ? "mouseup" : "touchend";
 
 const mode_btn = document.querySelector("hero-button");
+const scroll_box = document.querySelectorAll("scroll-box");
+const main_text = document.querySelectorAll("main-text");
+const hero_outline_btn = document.querySelector("hero-outline-button");
 const container = document.querySelector(".container");
+const progress_bar = document.querySelector(".bar_progress");
+const sub_header_con = document.querySelector(".sub_header_con");
+const logo = document.querySelector(".logo");
+const hero_contents_logo = document.querySelector(".hero_contents_logo");
+const share_btn = document.querySelector(".btn_share02");
+const comment_btn = document.querySelector(".btn_reply");
+const byline = document.querySelector(".byline");
+const link_wrap_title = document.querySelector(".link_wrap_title");
+const byline_text = document.querySelector(".byline_text");
+const byline_name = document.querySelectorAll(".txt_name");
+const the_original = document.querySelector("#the_original");
+const the_original_title_box = document.querySelector(".tit_cont");
+const the_original_title = document.querySelectorAll(".tit");
+const the_original_text = document.querySelectorAll(".cont_info");
+const btn_more = document.querySelector(".btn_more");
+const share_layer = document.querySelector(".share_layer");
+const share_layer_title = share_layer.children[0];
+const share_list = document.querySelector(".share_list");
+const facebook = document.querySelector(".icon_facebook");
+const twitter = document.querySelector(".icon_twitter");
+const kakao = document.querySelector(".icon_kakaotalk");
+const link_copy = document.querySelector(".btn_copyurl");
 
 mode_btn.addEventListener("click", () => {
     container.classList.toggle("dark-mode");
+
     mode_btn.setAttribute("text", container.classList.contains("dark-mode") ? "LIGHT MODE" : "DARK MODE");
-    document.querySelector(".sub_header_con").style.background = "var(--color-natural-black-100)";
-    document.querySelector(".logo").children[0].children[0].src = "https://image.donga.com/pc/2022/images/common/btn_donga05.png";
+    // hero_outline_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-100)");
+    // hero_outline_btn.setAttribute("back-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)");
+    scroll_box.forEach((v) => {
+        v.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)");
+        v.setAttribute("back-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-75)" : "var(--color-neutral-black-75)");
+    })
+    main_text.forEach((v) => {
+        v.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)");
+    })
+
+    sub_header_con.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
+    sub_header_con.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-black-100)" : "2px solid #f8f8f8";
+    logo.children[0].children[0].src = container.classList.contains("dark-mode") ? "https://image.donga.com/pc/2022/images/common/btn_donga05.png" : "https://image.donga.com/pc/2022/images/common/logo_donga01.png";
+    hero_contents_logo.children[0].children[0].src = container.classList.contains("dark-mode") ? "../images/logo_white.svg" : "../images/logo_black.svg"
+    share_btn.style.backgroundImage = container.classList.contains("dark-mode") ? 'url(../images/share_icon_white.svg)' : 'url(../images/share_icon.svg)'
+    comment_btn.style.backgroundImage = container.classList.contains("dark-mode") ? 'url(../images/comment_icon_white.svg)' : 'url(../images/comment_icon.svg)'
+    progress_bar.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-100)" : "2px solid var(--color-neutral-black-100)";
+    progress_bar.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "#f8f8f8";
+    byline.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
+    byline.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
+    link_wrap_title.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
+    byline_text.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "inherit";
+    byline_name.forEach((v) => {
+        v.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "inherit";
+    })
+    the_original.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
+    the_original_title_box.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
+    the_original_title.forEach((v) => {
+        v.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
+    })
+    the_original_text.forEach((v) => {
+        v.children[1].style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "var(--color-neutral-gray2)";
+    })
+    btn_more.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "#191919";
+    btn_more.style.border = container.classList.contains("dark-mode") ? "1px solid var(--color-neutral-white-100)" : "1px solid var(--color-neutral-gray3)";
+    btn_more.children[0].src = container.classList.contains("dark-mode") ? "../images/link_to_arrow_white.svg" : "../images/link_to_arrow.svg"
+    share_layer.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
+    share_layer_title.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
+    for(let i =0; i<4; i++){
+        share_list.children[i].style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
+    }
+    facebook.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/facebook_icon_white.svg)" : "url(../images/facebook_icon.svg)";
+    twitter.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/x_icon_white.svg)" : "url(../images/x_icon.svg)";
+    kakao.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/kakao_icon_white.svg)" : "url(../images/kakao_icon.svg)";
+    link_copy.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/Link_copy_icon_white.svg)" : "url(../images/Link_copy_icon.svg)";
 })
 
 // 문서 내용 ArchieML로 가져오기

@@ -21,6 +21,7 @@ class hero_component_Icon_Button extends HTMLElement {
                         align-items: center;
                         background-color: transparent;
                         border: none;
+                        padding: 0;
                         font-weight: 500;
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';
                     }
