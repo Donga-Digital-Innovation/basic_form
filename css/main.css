@@ -91,7 +91,8 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
 #the_original {width: 100%; padding: 120px calc((100% - 1280px) / 2 + 95px) 120px calc((100% - 1280px) / 2 + 95px); box-sizing: border-box;}
 #the_original .theoriginal_cont .tit_cont { padding-bottom: 8px; margin-bottom: 32px; border-bottom: 2px solid var(--color-neutral-black-50);}
 #the_original .theoriginal_cont .tit_cont .tit{ font-size: 22px; line-height: 180%; font-weight: 700; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';}
-#the_original .theoriginal_cont .tit_cont .btn_more{ font-weight: 700; font-size: 16px; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif'; border: 1px solid var(--color-neutral-black-100); padding: 3px 10px; line-height: 180%; background: none}
+#the_original .theoriginal_cont .tit_cont .btn_more{ font-weight: 700; font-size: 16px; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif'; border: 1px solid var(--color-neutral-gray3); padding: 3px 10px; line-height: 180%; background: none}
+#the_original .theoriginal_cont .tit_cont .btn_more:hover {border: 1px solid var(--color-neutral-black-100); color: var(--color-neutral-black-100) !important;}
 #the_original .theoriginal_cont .tit_cont .btn_more img{ width: 26px; }
 #the_original .theoriginal_cont .theoriginal_story { overflow: visible; display: flex; justify-content: space-between; align-items: flex-start; gap: 30px;}
 #the_original .theoriginal_cont .theoriginal_story li {float: none; margin-left: 0; width: 100%;}
@@ -134,18 +135,7 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
 } 
 
 @media all and (max-width: 876px){
- #shareLayer {transform: translate(-50%,-50%); top: 50%; left: 50%; opacity:1; width: 318px; height: 300px; z-index:105;} 
- #shareLayer .title {padding: 12px 0 8px;} 
- #shareLayer .share_list li {width: 54px; margin: 21px 16px 0;} 
- #shareLayer .share_list li a span {width: 54px; height: 54px; background: url(https://image.donga.com/m/2022/images/common/icon_sns.png) no-repeat 0 0; background-size: 231px 125px;} 
- #shareLayer .share_list li a .icon_twitter {background-position: -88px 0;} 
- #shareLayer .share_list li a .icon_kakaotalk {background-position: -176px 0;} 
- #shareLayer .share_list li a .icon_kakaostory {background-position: -88px -71px;} 
- #shareLayer .share_list li a .icon_line {background-position: 0 -71px;} 
- #shareLayer .share_list li.url {width: auto; margin: 0 0 0 9px; padding-top: 30px;} 
- #shareLayer .share_list li.url .url_inp {width: 161px; height: 36px; padding: 0 10px; border-top-left-radius: 4px; border-bottom-left-radius: 4px;} 
- #shareLayer .share_list li.url .btn_copyurl {width: 65px; height: 36px; border-top-right-radius: 4px; border-bottom-right-radius: 4px;} 
- #shareLayer .btn_close {top: 19px; right: 19px; width: 18px; height: 17px; background: url(https://image.donga.com/m/2022/images/common/icon_comm01.png) no-repeat 0 0; background-size: 150px 150px; background-position: 0 -81px;} 
+ #shareLayer {transform: translate(-50%,-50%); top: 50%; left: 50%; opacity:1; z-index:105;} 
  .m_shareBack {display:none; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgb(38, 43, 49); opacity: 0.7; z-index:104;} 
  
  /* byline */

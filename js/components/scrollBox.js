@@ -5,7 +5,7 @@ class hero_component_ScrollBox extends HTMLElement {
     }
 
     connectedCallback(){
-        let text = this.getAttribute('text');
+        let text = this.getAttribute('text').replace(/(\r\n|\n|\r)/gm, "<br>");
         let color = this.getAttribute('color');
         let back_color = this.getAttribute('back-color');
         this.shadowRoot.innerHTML = `
@@ -19,6 +19,8 @@ class hero_component_ScrollBox extends HTMLElement {
                         font-size: 18px;
                         letter-spacing: -2%;
                         line-height: 180%;
+                        margin: 0;
+                        margin-bottom: 40px;
                         border-radius: 8px;
                     }
                     @media all and (max-width: 1024px){

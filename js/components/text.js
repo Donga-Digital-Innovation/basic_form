@@ -5,7 +5,7 @@ class hero_component_MainText extends HTMLElement {
     }
 
     connectedCallback(){
-        let text = this.getAttribute('text');
+        let text = this.getAttribute('text').replace(/(\r\n|\n|\r)/gm, "<br>");
         let color = this.getAttribute('color');
         this.shadowRoot.innerHTML = `
                 <style>
@@ -16,6 +16,8 @@ class hero_component_MainText extends HTMLElement {
                         font-size: 18px;
                         letter-spacing: -2%;
                         line-height: 180%;
+                        margin: 0;
+                        padding-bottom: 40px;
                     }
                     @media all and (max-width: 768px){
                         p {
