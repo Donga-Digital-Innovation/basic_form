@@ -21,15 +21,8 @@ class hero_component_Button extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'text') {
-            this.buttonText = newValue;
-            this.updateButtonText();
-        }
-    }
-
-    updateButtonText() {
-        if (this.button) {
-            this.button.textContent = this.buttonText;
+        if (name === 'text' && this.button) {
+            this.button.textContent = newValue;
         }
     }
 
@@ -60,7 +53,6 @@ class hero_component_Button extends HTMLElement {
                 <button>${text}</button>
             `;
         this.button = this.shadowRoot.querySelector('button');
-        this.updateButtonText();
     }
 }
 

@@ -9,15 +9,8 @@ class hero_component_MainText extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'color') {
-            this.textColor = newValue;
-            this.updateTextColor();
-        }
-    }
-
-    updateTextColor() {
-        if (this.p) {
-            this.p.style.color = this.textColor;
+        if (name === 'color' && this.p) {
+            this.p.style.color = newValue;
         }
     }
 
@@ -48,7 +41,6 @@ class hero_component_MainText extends HTMLElement {
                 <p>${text}</p>
             `;
         this.p = this.shadowRoot.querySelector('p');
-        this.updateTextColor();
     }
 }
 

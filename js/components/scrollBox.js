@@ -9,25 +9,11 @@ class hero_component_ScrollBox extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'color') {
-            this.textColor = newValue;
-            this.updateTextColor();
+        if (name === 'color' && this.p) {
+            this.p.style.color = newValue;
         }
-        else if (name === 'back-color') {
-            this.backColor = newValue;
-            this.updateBackColor();
-        }
-    }
-
-    updateTextColor() {
-        if (this.p) {
-            this.p.style.color = this.textColor;
-        }
-    }
-
-    updateBackColor() {
-        if (this.p) {
-            this.p.style.backgroundColor = this.backColor;
+        else if (name === 'back-color' && this.p) {
+            this.p.style.backgroundColor = newValue;
         }
     }
 
@@ -63,8 +49,6 @@ class hero_component_ScrollBox extends HTMLElement {
                 <p>${text}</p>
             `;
         this.p = this.shadowRoot.querySelector('p');
-        this.updateTextColor();
-        this.updateBackColor();
     }
 }
 

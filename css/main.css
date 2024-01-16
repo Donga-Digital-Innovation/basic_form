@@ -34,8 +34,8 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
 #sub_header .donga_logo {left: 40px; margin-left: 0;}
 #sub_header .hero_contents_logo {width: 126px; position: absolute; z-index: 1;}
 #sub_header .right_box {top: auto;}
-#sub_header .right_box .btn_share02 {background-image: url(../images/share_icon.svg); width: 24px; height: 24px;}
-#sub_header .right_box .btn_reply {background-image: url(../images/comment_icon.svg); width: 24px; height: 24px; margin-left: 24px;}
+#sub_header .right_box .btn_share02 {background-position: center; background-image: url(../images/share_icon.svg); width: 24px; height: 24px;}
+#sub_header .right_box .btn_reply {background-position: center; background-image: url(../images/comment_icon.svg); width: 24px; height: 24px; margin-left: 24px;}
 .bar_progress {position: fixed; top: 0; left: 0; height: 60px; border-bottom: 2px solid var(--color-neutral-black-100); background: #f8f8f8;} 
 
 /* BYLINE */
@@ -72,7 +72,7 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
 /* 공유창 */
 #shareLayer {position:fixed; top:76px; opacity:0.9; right:40px; width: 360px; height: 180px; border-radius: 2px; padding: 20px; box-shadow: 0px 2px 14px 0px #00000026;}
 #shareLayer .title {padding: 0; font-size: 17px; font-weight: 700; line-height: 170%; text-align: left;}
-#shareLayer .btn_close {top: 22px; right: 20px; width: 15px; height: 15px; background-size: contain;}
+#shareLayer .btn_close {top: 26.5px; right: 24.6px; width: 15px; height: 15px; background-size: contain;}
 .icon_comm01 {background: url(https://image.donga.com/m/2022/images/common/icon_comm01.png) no-repeat 0 0; background-size: 150px 150px; font-size: 0; color: transparent;} 
 #shareLayer .share_list {overflow: visible; margin-top: 24px; padding: 0; display: flex; justify-content: space-between; align-items: center;}
 #shareLayer .share_list li {margin: 0; float: none; width: 60px; text-align: center; color: var(--color-neutral-gray1-100); font-size: 13px; line-height: 170%; font-weight: 500;}
@@ -83,7 +83,7 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
 #shareLayer .share_list li a .icon_line {background-position: 0 -81px;} 
 #shareLayer .share_list li.url {margin: 0; padding: 0;}
 #shareLayer .share_list li.url .btn_copyurl {border: 1px solid var(--color-neutral-gray4); width: 60px; height: 60px; border-radius: 0; vertical-align: inherit; background-color: transparent; box-sizing: border-box; background-image: url(../images/Link_copy_icon.svg); background-repeat: no-repeat; background-position: center; background-size: 30px;}
-#shareLayer .share_list li.url .url_inp {position: absolute; width: 0; opacity: 0;}
+#shareLayer .share_list li.url .url_inp {position: absolute; width: 0; opacity: 0; z-index: -1;}
 #shareLayer .share_list li.url .txt {bottom: -76px; left: -208px; background-color: var(--color-neutral-white-100); width: 240px; height: 40px; border: none; border-radius: 4px; padding: 6px 24px; box-shadow: 0px 2px 14px 0px #00000026; font-size: 18px; line-height: 150%; font-weight: 500; color: var(--color-neutral-black-100); box-sizing: border-box;}
 #replyLayerPopup{display:none;}
 
