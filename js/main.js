@@ -1,7 +1,13 @@
-import './components/button.js';
+import './components/linkImageTitle.js';
 import './components/outlineButton.js';
+import './components/linkWrapTitle.js';
+import './components/linkWrapText.js';
+import './components/bylineInfo.js';
 import './components/iconButton.js';
+import './components/textButton.js';
+import './components/linkImage.js';
 import './components/scrollBox.js';
+import './components/button.js';
 import './components/text.js';
 
 //ios, android distinguish
@@ -31,7 +37,7 @@ const mode_btn = document.querySelector("hero-button");
 const scroll_box = document.querySelectorAll("scroll-box");
 const main_text = document.querySelectorAll("main-text");
 const hero_outline_btn = document.querySelector("hero-outline-button");
-const hero_icon_btn = document.querySelector("hero-icon-button");
+const hero_text_btn = document.querySelector("hero-text-button");
 const container = document.querySelector(".container");
 const progress_bar = document.querySelector(".bar_progress");
 const sub_header_con = document.querySelector(".sub_header_con");
@@ -40,9 +46,9 @@ const hero_contents_logo = document.querySelector(".hero_contents_logo");
 const share_btn = document.querySelector(".btn_share02");
 const comment_btn = document.querySelector(".btn_reply");
 const byline = document.querySelector(".byline");
-const link_wrap_title = document.querySelector(".link_wrap_title");
+const link_wrap_header = document.querySelector(".link_wrap_header");
 const byline_text = document.querySelector(".byline_text");
-const byline_name = document.querySelectorAll(".txt_name");
+const hero_icon_btn = document.querySelectorAll("hero-icon-button");
 const the_original = document.querySelector("#the_original");
 const the_original_title_box = document.querySelector(".tit_cont");
 const the_original_title = document.querySelectorAll(".tit");
@@ -65,8 +71,13 @@ mode_btn.addEventListener("click", () => {
     hero_outline_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)");
     hero_outline_btn.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)");
     hero_outline_btn.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-gray2)" : "var(--color-neutral-black-100)");
-    hero_icon_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-100)");
-    hero_icon_btn.setAttribute("img", container.classList.contains("dark-mode") ? "../images/right_arrow_white.svg" : "../images/right_arrow.svg");
+    hero_text_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-100)");
+    hero_text_btn.setAttribute("img", container.classList.contains("dark-mode") ? "../images/right_arrow_white.svg" : "../images/right_arrow.svg");
+    hero_icon_btn.forEach((v) => {
+        v.setAttribute("img", container.classList.contains("dark-mode") ? "../images/right_arrow_white.svg" : "../images/right_arrow.svg")
+        v.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)")
+        v.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray2)")
+    })
     scroll_box.forEach((v) => {
         v.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)");
         v.setAttribute("back-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-75)" : "var(--color-neutral-black-75)");
@@ -85,11 +96,8 @@ mode_btn.addEventListener("click", () => {
     progress_bar.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "#f8f8f8";
     byline.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
     byline.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
-    link_wrap_title.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
+    link_wrap_header.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
     byline_text.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "inherit";
-    byline_name.forEach((v) => {
-        v.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "inherit";
-    })
     the_original.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
     the_original_title_box.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
     the_original_title.forEach((v) => {
