@@ -5,7 +5,7 @@ class hero_component_Icon_Button extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['border-color', 'img', 'hover-color']; // 관찰할 속성 지정
+        return ['border-color', 'img', 'hover-color', 'fill-color']; // 관찰할 속성 지정
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -15,20 +15,23 @@ class hero_component_Icon_Button extends HTMLElement {
             this.img.src = newValue;
         } else if (name === 'border-color'){
             this.style.setProperty('--border-color', newValue);
+        } else if (name === 'fill-color' && this.svg){
+            this.svg.children[0].style.fill = newValue;
         }
     }
     
     connectedCallback(){
         let width = this.getAttribute('width');
         let height = this.getAttribute('height');
-        let img = this.getAttribute('img');
-        let alt = this.getAttribute('alt');
+        let svgData = this.getAttribute('svg-data');
         let angle = this.getAttribute('angle') || '0deg';
-        let border_color = this.getAttribute('border-color');
+        let fill_color = this.getAttribute('fill-color') || 'var(--color-neutral-black-100)';
         let hover_color = this.getAttribute('hover-color');
+        let border_color = this.getAttribute('border-color');
 
         this.style.setProperty('--border-color', border_color);
         this.style.setProperty('--hover-color', hover_color);
+        this.style.setProperty('--fill-color', fill_color);
 
         this.shadowRoot.innerHTML = `
                 <style>
@@ -45,19 +48,24 @@ class hero_component_Icon_Button extends HTMLElement {
                         align-items: center;
                     }
 
-                    button img{
+                    svg {
                         width: 17px;
+                        height: 17px;
                         transform: rotate(${angle});
+                    }
+                    
+                    path {
+                        fill: var(--fill-color);
                     }
 
                     button:hover{
                         border: 1px solid var(--hover-color);
                     }
                 </style>
-                <button><img src="${img}" alt="${alt}" /></button>
+                <button>${svgData}</button>
             `;
         this.button = this.shadowRoot.querySelector('button');
-        this.img = this.shadowRoot.querySelector('img');
+        this.svg = this.shadowRoot.querySelector('svg');
     }
 }
 

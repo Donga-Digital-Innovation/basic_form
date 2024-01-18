@@ -33,6 +33,7 @@ const mouseDown = !isMobile ? "mousedown" : "touchstart";
 const mouseMove = !isMobile ? "mousemove" : "touchmove";
 const mouseUp = !isMobile ? "mouseup" : "touchend";
 
+//Darkmode용 코드
 const mode_btn = document.querySelector("hero-button");
 const scroll_box = document.querySelectorAll("scroll-box");
 const main_text = document.querySelectorAll("main-text");
@@ -74,7 +75,7 @@ mode_btn.addEventListener("click", () => {
     hero_text_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-100)");
     hero_text_btn.setAttribute("img", container.classList.contains("dark-mode") ? "../images/right_arrow_white.svg" : "../images/right_arrow.svg");
     hero_icon_btn.forEach((v) => {
-        v.setAttribute("img", container.classList.contains("dark-mode") ? "../images/right_arrow_white.svg" : "../images/right_arrow.svg")
+        v.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)")
         v.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)")
         v.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray2)")
     })

@@ -180,8 +180,8 @@
 		<div class="link_wrap_header">
 			<link-wrap-title text="&lt;미아: 품을 잃은 아이들&gt;"></link-wrap-title>
 			<ul class="move_btn_list">
-				<li><hero-icon-button onclick="moveLeft()" angle="180deg" width="30px" height="30px" img="../images/right_arrow.svg" alt="왼쪽 화살표" border-color="var(--color-neutral-gray4)" hover-color="var(--color-neutral-gray2)"></hero-icon-button></li>
-				<li><hero-icon-button onclick="moveRight()" width="30px" height="30px" img="../images/right_arrow.svg" alt="오른쪽 화살표" border-color="var(--color-neutral-gray4)" hover-color="var(--color-neutral-gray2)"></hero-icon-button></li>
+				<li><hero-icon-button onclick="moveLeft()" angle="180deg" fill-color="var(--color-neutral-gray4)" width="30px" height="30px" svg-data='<svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.4276 6.99909L4.6665 3.50665L5.22221 2.9082L9.62778 6.99909L5.22221 11.09L4.6665 10.4915L8.4276 6.99909Z"/></svg>' border-color="var(--color-neutral-gray4)" hover-color="var(--color-neutral-gray4)"></hero-icon-button></li>
+				<li><hero-icon-button onclick="moveRight()" width="30px" height="30px" svg-data='<svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.4276 6.99909L4.6665 3.50665L5.22221 2.9082L9.62778 6.99909L5.22221 11.09L4.6665 10.4915L8.4276 6.99909Z"/></svg>' border-color="var(--color-neutral-gray4)" hover-color="var(--color-neutral-gray2)"></hero-icon-button></li>
 			</ul>
 		</div>
 		<div class="link_wrap">
@@ -208,25 +208,48 @@
 	</footer>
 	<script>
 		let currentTranslateX = 0;
+		const container = document.querySelector(".container");
 		const maxTranslateX = document.querySelectorAll('.link_to_news').length - 1; // 요소의 수 - 1
+		const left_btn = document.querySelectorAll("hero-icon-button")[0]; 
+		const right_btn = document.querySelectorAll("hero-icon-button")[1];
 
 		function moveLeft() {
-			if (currentTranslateX < 0) {
-				currentTranslateX++;
+			if (currentTranslateX === maxTranslateX - 1) {
+				right_btn.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)");
+				container.classList.contains("dark-mode") ? right_btn.setAttribute("border-color", "var(--color-neutral-white-100)") : right_btn.setAttribute("hover-color", "var(--color-neutral-gray2)");
+				currentTranslateX--;
+				updateTranslation();
+			} else if(currentTranslateX === 1){
+				left_btn.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray4)");
+				container.classList.contains("dark-mode") ? left_btn.setAttribute("border-color", "var(--color-neutral-white-50)") : left_btn.setAttribute("hover-color", "var(--color-neutral-gray4)");
+				currentTranslateX--;
+				updateTranslation();
+			} else if(currentTranslateX > 0) {
+				currentTranslateX--;
 				updateTranslation();
 			}
 		}
 		
 		function moveRight() {
-			if (currentTranslateX > - maxTranslateX + 1) {
-				currentTranslateX--;
+			if (currentTranslateX === 0) {
+				left_btn.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)");
+				container.classList.contains("dark-mode") ? left_btn.setAttribute("border-color", "var(--color-neutral-white-100)") : left_btn.setAttribute("hover-color", "var(--color-neutral-gray2)");
+				currentTranslateX++;
+				updateTranslation();
+			} else if(currentTranslateX === maxTranslateX - 2){
+				right_btn.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray4)");
+				container.classList.contains("dark-mode") ? right_btn.setAttribute("border-color", "var(--color-neutral-white-50)") : right_btn.setAttribute("hover-color", "var(--color-neutral-gray4)");
+				currentTranslateX++;
+				updateTranslation();
+			} else if(currentTranslateX < maxTranslateX - 1){
+				currentTranslateX++;
 				updateTranslation();
 			}
 		}
 	
 		function updateTranslation() {
 			document.querySelectorAll('.link_to_news').forEach(function(element) {
-				element.style.transform = 'translateX(calc(' + currentTranslateX + ' * (100% + 24px)))';
+				element.style.transform = 'translateX(calc(' + currentTranslateX + ' * (-100% - 24px)))';
 			});
 		}
 	</script>

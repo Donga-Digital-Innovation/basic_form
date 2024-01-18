@@ -32,13 +32,13 @@ class hero_component_ScrollBox extends HTMLElement {
                         font-size: 18px;
                         letter-spacing: -2%;
                         line-height: 180%;
-                        margin: 0;
+                        margin: 0 24px;
                         margin-bottom: 40px;
                         border-radius: 8px;
                     }
                     @media all and (max-width: 1024px){
                         p {
-                            max-width: 343px;
+                            max-width: 342px;
                             font-size: 16px;
                             letter-spacing: -3%;
                             line-height: 160%;
