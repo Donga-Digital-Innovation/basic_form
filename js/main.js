@@ -7,6 +7,7 @@ import './components/iconButton.js';
 import './components/textButton.js';
 import './components/linkImage.js';
 import './components/scrollBox.js';
+import './components/heroLink.js';
 import './components/button.js';
 import './components/text.js';
 
@@ -54,7 +55,7 @@ const the_original = document.querySelector("#the_original");
 const the_original_title_box = document.querySelector(".tit_cont");
 const the_original_title = document.querySelectorAll(".tit");
 const the_original_text = document.querySelectorAll(".cont_info");
-const btn_more = document.querySelector(".btn_more");
+const hero_link = document.querySelector("hero-link");
 const share_layer = document.querySelector(".share_layer");
 const share_layer_title = share_layer.children[0];
 const share_layer_close_btn = share_layer.children[2];
@@ -68,12 +69,13 @@ const url_txt = document.querySelector("#urlTxt");
 mode_btn.addEventListener("click", () => {
     container.classList.toggle("dark-mode");
 
+    document.documentElement.style.setProperty('--color-primary-cyan', container.classList.contains("dark-mode") ? '#00B5B8' : '#008689');
     mode_btn.setAttribute("text", container.classList.contains("dark-mode") ? "LIGHT MODE" : "DARK MODE");
     hero_outline_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)");
     hero_outline_btn.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)");
     hero_outline_btn.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-gray2)" : "var(--color-neutral-black-100)");
-    hero_text_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-100)");
-    hero_text_btn.setAttribute("img", container.classList.contains("dark-mode") ? "../images/right_arrow_white.svg" : "../images/right_arrow.svg");
+    hero_text_btn.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray2)");
+    hero_text_btn.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-50)");
     hero_icon_btn.forEach((v) => {
         v.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)")
         v.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)")
@@ -107,13 +109,19 @@ mode_btn.addEventListener("click", () => {
     the_original_text.forEach((v) => {
         v.children[1].style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "var(--color-neutral-gray2)";
     })
-    btn_more.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "#191919";
-    btn_more.style.border = container.classList.contains("dark-mode") ? "1px solid var(--color-neutral-white-100)" : "1px solid var(--color-neutral-gray3)";
-    btn_more.children[0].src = container.classList.contains("dark-mode") ? "../images/link_to_arrow_white.svg" : "../images/link_to_arrow.svg"
+    hero_link.setAttribute("color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)")
+    hero_link.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)")
+    hero_link.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)")
+    hero_link.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray2)")
     share_layer.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
     share_layer_title.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
     for(let i = 0; i<4; i++){
         share_list.children[i].style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
+        if(i !== 3){
+            share_list.children[i].children[0].children[0].classList.toggle("dark-mode");
+        } else {
+            share_list.children[i].children[1].classList.toggle("dark-mode")
+        }
     }
     share_layer_close_btn.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/close_icon_white.svg)" : "url(https://image.donga.com/pc/2022/images/common/share_close.png)"
     facebook.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/facebook_icon_white.svg)" : "url(../images/facebook_icon.svg)";

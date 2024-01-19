@@ -12,7 +12,7 @@ class hero_component_LinkWrap_Title extends HTMLElement {
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';
                         font-size: 22px;
                         width: calc(100% - 104px);
-                        font-weight: 700;
+                        font-weight: 600;
                         line-height: 140%;
                         padding: 0 0 8px 0; 
                         margin: 0;
@@ -20,7 +20,7 @@ class hero_component_LinkWrap_Title extends HTMLElement {
                     @media all and (max-width: 480px){
                         h2 {
                             width: auto;
-                            padding: 0 0 32px 0;
+                            padding: 0 0 24px 0;
                         }
                     }
                 </style>

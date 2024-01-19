@@ -26,11 +26,12 @@ class hero_component_ScrollBox extends HTMLElement {
                     p {
                         background-color: ${back_color};
                         color: ${color};
+                        font-weight: 300;
                         max-width: 640px;
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';
                         padding: 32px;
                         font-size: 18px;
-                        letter-spacing: -2%;
+                        letter-spacing: -0.02em;
                         line-height: 180%;
                         margin: 0 24px;
                         margin-bottom: 40px;
@@ -40,7 +41,7 @@ class hero_component_ScrollBox extends HTMLElement {
                         p {
                             max-width: 342px;
                             font-size: 16px;
-                            letter-spacing: -3%;
+                            letter-spacing: -0.03em;
                             line-height: 160%;
                             padding: 16px;
                         }

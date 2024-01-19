@@ -22,7 +22,7 @@ class hero_component_Byline_Info extends HTMLElement {
                     }
                     span {
                         margin-right: 16px;
-                        font-weight: 700;
+                        font-weight: 600;
                         display: inline-block;
                         text-align: left;
                     } 

@@ -24,7 +24,7 @@ class hero_component_MainText extends HTMLElement {
                         max-width: 640px;
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';
                         font-size: 18px;
-                        letter-spacing: -2%;
+                        letter-spacing: -0.02em;
                         line-height: 180%;
                         margin: 0;
                         padding-bottom: 40px;
@@ -33,8 +33,8 @@ class hero_component_MainText extends HTMLElement {
                         p {
                             margin: 0 24px;
                             font-size: 16px;
-                            letter-spacing: -3%;
-                            line-height: 150%;
+                            letter-spacing: -0.03em;
+                            line-height: 160%;
                         }
                     }
                 </style>

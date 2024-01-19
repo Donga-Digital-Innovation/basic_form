@@ -39,8 +39,11 @@ class hero_component_LinkImage extends HTMLElement {
                         right: 0;
                         bottom: 0;
                         border-radius: 2px 0 0 0;
-                        font-weight: 700;
-                        padding: 6px 8px;
+                        font-weight: 600;
+                        padding: 6px 10px;
+                    }
+                    a:hover{
+                        border: 2px solid var(--color-primary-cyan);
                     }
                     img {
                         width: 100%;

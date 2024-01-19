@@ -13,7 +13,7 @@ class hero_component_LinkImage_Title extends HTMLElement {
                     h3 {
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';
                         font-size: 18px;
-                        font-weight: 700;
+                        font-weight: 600;
                         line-height: 150%;
                         opacity: ${present};
                         margin: 16px 0 0 0;

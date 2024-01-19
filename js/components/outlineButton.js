@@ -33,7 +33,7 @@ class hero_component_Outline_Button extends HTMLElement {
                         color: ${color};
                         padding: 9px 17px;
                         border: 1px solid var(--border-color);
-                        border-radius: 5px;
+                        border-radius: 2px;
                         cursor: pointer;
                         font-weight: 700;
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';

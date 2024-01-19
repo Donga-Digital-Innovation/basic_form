@@ -5,25 +5,26 @@ class hero_component_Text_Button extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['color', 'img']; // 관찰할 속성 지정
+        return ['color', 'fill-color']; // 관찰할 속성 지정
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'color') {
             this.style.setProperty('--text-color', newValue);
-        } else if (name === 'img' && this.img) {
-            this.img.src = newValue;
+        } else if (name === 'fill-color') {
+            this.style.setProperty('--fill-color', newValue);
         }
     }
     
     connectedCallback(){
         // 디폴트 값 설정을 넣어놓는 게 좋을 것 같음.
         let text = this.getAttribute('text');
-        let img = this.getAttribute('img');
-        let alt = this.getAttribute('alt');
+        let svgData = this.getAttribute('svg-data');
         let color = this.getAttribute('color');
+        let fill_color = this.getAttribute('fill-color') || "var(--color-neutral-gray1-50)";
 
         this.style.setProperty('--text-color', color);
+        this.style.setProperty('--fill-color', fill_color);
 
         this.shadowRoot.innerHTML = `
                 <style>
@@ -42,21 +43,25 @@ class hero_component_Text_Button extends HTMLElement {
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';
                     }
 
-                    button img{
+                    svg {
                         width: 14px;
                     }
 
-                    button:hover{
+                    path {
+                        fill: var(--fill-color);
+                    }
+
+                    button:hover {
                         text-decoration: underline;
                         text-decoration-thickness: 1px;
                         text-decoration-color: var(--text-color);
                         text-underline-position: under;
                     }
                 </style>
-                <button>${text} <img src="${img}" alt="${alt}" /></button>
+                <button>${text} ${svgData}</button>
             `;
         this.button = this.shadowRoot.querySelector('button');
-        this.img = this.shadowRoot.querySelector('img');
+        this.svg = this.shadowRoot.querySelector('svg');
     }
 }
 

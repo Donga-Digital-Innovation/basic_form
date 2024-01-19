@@ -5,18 +5,16 @@ class hero_component_Icon_Button extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['border-color', 'img', 'hover-color', 'fill-color']; // 관찰할 속성 지정
+        return ['border-color', 'hover-color', 'fill-color']; // 관찰할 속성 지정
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'hover-color') {
             this.style.setProperty('--hover-color', newValue);
-        } else if (name === 'img' && this.img) {
-            this.img.src = newValue;
         } else if (name === 'border-color'){
             this.style.setProperty('--border-color', newValue);
-        } else if (name === 'fill-color' && this.svg){
-            this.svg.children[0].style.fill = newValue;
+        } else if (name === 'fill-color'){
+            this.style.setProperty('--fill-color', newValue);
         }
     }
     
