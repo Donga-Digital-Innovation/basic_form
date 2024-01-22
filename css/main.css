@@ -73,6 +73,7 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
 #shareLayer .share_list li.url .url_inp {position: absolute; width: 0; opacity: 0; z-index: -1;}
 #shareLayer .share_list li.url .txt {bottom: -76px; left: -208px; background-color: var(--color-neutral-white-100); width: 240px; height: 40px; border: none; border-radius: 4px; padding: 6px 24px; box-shadow: 0px 2px 14px 0px #00000026; font-size: 18px; line-height: 150%; font-weight: 500; color: var(--color-neutral-black-100); box-sizing: border-box;}
 #replyLayerPopup{display:none;}
+
 /* for dark-mode */
 #shareLayer .share_list li.url .btn_copyurl.dark-mode {border: 1px solid var(--color-neutral-white-50);}
 #shareLayer .share_list li.url .btn_copyurl.dark-mode:hover {border: 1px solid var(--color-neutral-white-100);}
