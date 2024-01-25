@@ -94,30 +94,9 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
 #the_original .theoriginal_cont .theoriginal_story li a .cont_info .tit {padding-top: 16px; font-size: 18px; line-height: 150%; font-weight: 700; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif'; color: var(--color-neutral-gray1-100); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;}
 #the_original .theoriginal_cont .theoriginal_story li a .cont_info .txt {padding-top: 8px; font-size: 16px; line-height: 150%; font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif'; color: var(--color-neutral-gray2); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;}
 
-/* footer */
-.letter_cont { display: table; width: 100%; box-sizing: border-box; border-bottom: 1px solid var(--color-neutral-black-100); } 
-.letter_cont a { display: table-cell; width: 33.33%; height: 50px; background: #231f20; font-size: 14px; color: var(--color-neutral-white-100); text-align: center; line-height: 50px; } 
-.letter_cont a { border-right: 1px solid #656363; } 
-.letter_cont a:last-child { border-right: 0; } 
-.letter_cont a .icon_letter { display: inline-block; width: 19px; height: 12px; margin-right: 5px; background-position: -30px -30px; } 
-.letter_cont a .icon_tip { display: inline-block; width: 17px; height: 15px; margin-right: 4px; background-position: -61px -30px; vertical-align: middle; } 
-#the_original_m, #footer_m { display: none; } 
-
 @media all and (max-width: 1280px) {
  .byline { padding: 170px 95px 0 95px; }
  #the_original {padding: 120px 95px 120px 95px;}
-} 
-
-@media all and (max-width: 1200px) { 
- .donga_media .media_cont { width: 870px; } 
- .donga_media .alim_msg { width: 258px; }
- .donga_media .alim_msg .dongagroup_layer { width: 242px; } 
- .donga_media .family_site { width: 208px; } 
- .donga_media .family_site .family_layer { width: 192px; } 
- #sitemap { width: 870px; } 
- #sitemap .sitemap_box dl { width: 108px; } 
- #sitemap .sitemap_box dl dt, #sitemap .sitemap_box dl dd a, #sitemap .sitemap_box dl dt a { font-size: 13px; } 
- #footer .footerBox { width: 870px;} 
 } 
 
 @media all and (max-width: 1024px) {
@@ -170,35 +149,6 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
  #the_original .theoriginal_cont .theoriginal_story li a .thumb img {height: 65px; width: auto;}
  #the_original .theoriginal_cont .theoriginal_story li a .cont_info .tit {font-size: 16px; padding-top: 0;}
  #the_original .theoriginal_cont .theoriginal_story li a .cont_info .txt {font-size: 13px; padding-top: 2px; -webkit-line-clamp: 2;}
-
- /* footer */
- .fix_footer { position: fixed !important; left: 0; bottom: 0; width: 100%; z-index: 10000000; } 
- .fix_footer .sns_area { display: none; } 
- .fix_footer .person_info { height: auto !important; padding: 19px 0 !important; } 
- #wrap #footer_m { clear: both; position: relative; height: auto; line-height: 1.4; background: var(--color-neutral-white-100); text-align: left; } 
- .letter_cont { display: table; width: 100%; box-sizing: border-box; border-bottom: 1px solid #000; } 
- .letter_cont a { display: table-cell; width: 33.33%; height: 50px; background: #231f20; font-size: 14px; color: var(--color-neutral-white-100); text-align: center; line-height: 50px; } 
- .letter_cont a { border-right: 1px solid #656363; } 
- .letter_cont a:last-child { border-right: 0; } 
- .letter_cont a .icon_letter { display: inline-block; width: 19px; height: 12px; margin-right: 5px; background-position: -30px -30px; } 
- .letter_cont a .icon_tip { display: inline-block; width: 17px; height: 15px; margin-right: 4px; background-position: -61px -30px; vertical-align: middle; } 
- #footer_m .site_map .map_cont .tit { display: block; font-size: 18px; color: #333; } 
- #footer_m .sns_area { padding: 30px 30px 34px 30px; background: var(--color-neutral-white-100); border-bottom: 1px solid #e2e2e2; text-align: center; } 
- #footer_m .sns_area .txt { display: inline-block; font-size: 14px; color: #242424; } 
- #footer_m .sns_area .sns_list { overflow: hidden; display: table; width: 100%; margin: 0 auto; padding: 27px 0 0 0; } 
- #footer_m .sns_area .sns_list li { display: table-cell; width: 20%; height: 40px; } 
- #footer_m .sns_area .sns_list li a {display: block; width: 40px; height: 40px; margin: 0 auto; background: url("https://image.donga.com/m/2022/images/common/footer_share01.png") no-repeat 0 0; background-size: 321px 40px; font-size: 0; color: transparent;} 
- #footer_m .sns_area .sns_list li .btn_youtube { background-position: 0 0; } 
- #footer_m .sns_area .sns_list li .btn_facebook { background-position: -56px 0; } 
- #footer_m .sns_area .sns_list li .btn_naver { background-position: -112px 0; } 
- #footer_m .sns_area .sns_list li .btn_twitter { background-position: -169px 0; } 
- #footer_m .sns_area .sns_list li .btn_kakao { background-position: -225px 0; } 
- #footer_m .sns_area .sns_list li .btn_donga { background-position: -281px 0; } 
- #footer_m .person_info { height: 65px; padding: 30px 0 0 0; text-align: center; background: #f8f8f8; font-size: 13px; color: #6c737d; } 
- #footer_m .person_info a { display: inline-block; } 
- #footer_m .person_info a.term02 { font-weight: bold; color: #6c7385; } 
- #footer_m .person_info a:after { content: "|"; display: inline-block; padding: 0 8px; color: #b2b3b5; font-weight: normal; } 
- #footer_m .person_info a.term02:nth-child(3):after {content: "";} 
 } 
 
 @media all and (max-width: 480px) {
