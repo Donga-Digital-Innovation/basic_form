@@ -21,7 +21,7 @@ class hero_component_MainText extends HTMLElement {
                 <style>
                     p {
                         color: ${color};
-                        max-width: 640px;
+                        width: 640px;
                         font-family: Inter, 'Spoqa Han Sans Neo', 'sans-serif';
                         font-size: 18px;
                         letter-spacing: -0.02em;
