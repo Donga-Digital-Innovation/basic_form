@@ -35,6 +35,7 @@ class hero_component_MainText extends HTMLElement {
                             font-size: 16px;
                             letter-spacing: -0.03em;
                             line-height: 160%;
+                            width: calc(100vw - 72px);
                         }
                     }
                 </style>

@@ -153,7 +153,7 @@ body #wrap .container {width: 100%; font-family: Inter, 'Spoqa Han Sans Neo', 's
  #spinTopLayer .spinTopLayerWrite .contextsize {position:initial; float: left; margin-top: 5px; font-size: 12px; color: #949494;} 
 
  /* The original */
- #the_original {padding: 120px 16px 160px 16px;}
+ #the_original {padding: 120px 16px 120px 16px;}
  #the_original .theoriginal_cont .tit_cont { padding-bottom: 24px; position: inherit;}
  #the_original .theoriginal_cont .theoriginal_story{ flex-direction: column; }
  #the_original .theoriginal_cont .theoriginal_story li { width: 100%; }

@@ -44,6 +44,8 @@ class hero_component_ScrollBox extends HTMLElement {
                             letter-spacing: -0.03em;
                             line-height: 160%;
                             padding: 16px;
+                            margin: 0 0 40px 0;
+                            box-sizing: border-box;
                         }
                     }
                 </style>
