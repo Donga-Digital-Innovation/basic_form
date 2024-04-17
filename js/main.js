@@ -91,12 +91,11 @@ mode_btn.addEventListener("click", () => {
 
     sub_header_con.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
     sub_header_con.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-black-100)" : "2px solid #f8f8f8";
-    logo.children[0].children[0].src = container.classList.contains("dark-mode") ? "https://image.donga.com/pc/2022/images/common/btn_donga05.png" : "https://image.donga.com/pc/2022/images/common/logo_donga01.png";
+    logo.children[0].children[0].src = container.classList.contains("dark-mode") ? "../images/donga_logo_white.svg" : "../images/donga_logo.svg";
     hero_contents_logo.children[0].children[0].src = container.classList.contains("dark-mode") ? "../images/logo_white.svg" : "../images/logo_black.svg"
     share_btn.style.backgroundImage = container.classList.contains("dark-mode") ? 'url(../images/share_icon_white.svg)' : 'url(../images/share_icon.svg)'
     comment_btn.style.backgroundImage = container.classList.contains("dark-mode") ? 'url(../images/comment_icon_white.svg)' : 'url(../images/comment_icon.svg)'
     progress_bar.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-100)" : "2px solid var(--color-neutral-black-100)";
-    progress_bar.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "#f8f8f8";
     byline.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
     byline.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
     link_wrap_header.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
@@ -127,7 +126,8 @@ mode_btn.addEventListener("click", () => {
     facebook.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/facebook_icon_white.svg)" : "url(../images/facebook_icon.svg)";
     twitter.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/x_icon_white.svg)" : "url(../images/x_icon.svg)";
     kakao.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/kakao_icon_white.svg)" : "url(../images/kakao_icon.svg)";
-    link_copy.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/Link_copy_icon_white.svg)" : "url(../images/Link_copy_icon.svg)";
+    link_copy.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-100)";
+    link_copy.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
     url_txt.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
     url_txt.style.backgroundColor = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
 })
