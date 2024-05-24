@@ -40,13 +40,12 @@ const scroll_box = document.querySelectorAll("scroll-box");
 const main_text = document.querySelectorAll("main-text");
 const hero_outline_btn = document.querySelector("hero-outline-button");
 const hero_text_btn = document.querySelector("hero-text-button");
-const container = document.querySelector(".container");
-const progress_bar = document.querySelector(".bar_progress");
+const container = document.querySelector("#container");
 const sub_header_con = document.querySelector(".sub_header_con");
-const logo = document.querySelector(".logo");
+const donga_logo = document.getElementById(document.querySelector('.logo svg use').getAttribute('href').substring(1)).querySelector('path');
 const hero_contents_logo = document.querySelector(".hero_contents_logo");
-const share_btn = document.querySelector(".btn_share02");
-const comment_btn = document.querySelector(".btn_reply");
+const share_btn = document.getElementById(document.querySelectorAll('.ic svg use')[0].getAttribute('href').substring(1)).querySelector('path');
+const comment_btn = document.getElementById(document.querySelectorAll('.ic svg use')[5].getAttribute('href').substring(1)).querySelector('path');
 const byline = document.querySelector(".byline");
 const link_wrap_header = document.querySelector(".link_wrap_header");
 const byline_text = document.querySelector(".byline_text");
@@ -56,15 +55,6 @@ const the_original_title_box = document.querySelector(".tit_cont");
 const the_original_title = document.querySelectorAll(".tit");
 const the_original_text = document.querySelectorAll(".cont_info");
 const hero_link = document.querySelector("hero-link");
-const share_layer = document.querySelector(".share_layer");
-const share_layer_title = share_layer.children[0];
-const share_layer_close_btn = share_layer.children[2];
-const share_list = document.querySelector(".share_list");
-const facebook = document.querySelector(".icon_facebook");
-const twitter = document.querySelector(".icon_twitter");
-const kakao = document.querySelector(".icon_kakaotalk");
-const link_copy = document.querySelector(".btn_copyurl");
-const url_txt = document.querySelector("#urlTxt");
 
 mode_btn.addEventListener("click", () => {
     container.classList.toggle("dark-mode");
@@ -91,19 +81,20 @@ mode_btn.addEventListener("click", () => {
 
     sub_header_con.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
     sub_header_con.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-black-100)" : "2px solid #f8f8f8";
-    logo.children[0].children[0].src = container.classList.contains("dark-mode") ? "../images/donga_logo_white.svg" : "../images/donga_logo.svg";
+    donga_logo.setAttribute("fill", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color, #111111)")
     hero_contents_logo.children[0].children[0].src = container.classList.contains("dark-mode") ? "../images/logo_white.svg" : "../images/logo_black.svg"
-    share_btn.style.backgroundImage = container.classList.contains("dark-mode") ? 'url(../images/share_icon_white.svg)' : 'url(../images/share_icon.svg)'
-    comment_btn.style.backgroundImage = container.classList.contains("dark-mode") ? 'url(../images/comment_icon_white.svg)' : 'url(../images/comment_icon.svg)'
-    progress_bar.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-100)" : "2px solid var(--color-neutral-black-100)";
+    share_btn.setAttribute("fill", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color, #111111)")
+    comment_btn.setAttribute("fill", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color, #111111)")
     byline.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
     byline.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
     link_wrap_header.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
     byline_text.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "inherit";
     the_original.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
     the_original_title_box.style.borderBottom = container.classList.contains("dark-mode") ? "2px solid var(--color-neutral-white-50)" : "2px solid var(--color-neutral-black-50)";
-    the_original_title.forEach((v) => {
-        v.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
+    the_original_title.forEach((v, i) => {
+        if(i !== 0){
+            v.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
+        }
     })
     the_original_text.forEach((v) => {
         v.children[1].style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-gray4)" : "var(--color-neutral-gray2)";
@@ -112,85 +103,93 @@ mode_btn.addEventListener("click", () => {
     hero_link.setAttribute("fill-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)")
     hero_link.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)")
     hero_link.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray2)")
-    share_layer.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
-    share_layer_title.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
-    for(let i = 0; i<4; i++){
-        share_list.children[i].style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
-        if(i !== 3){
-            share_list.children[i].children[0].children[0].classList.toggle("dark-mode");
-        } else {
-            share_list.children[i].children[1].classList.toggle("dark-mode")
-        }
-    }
-    share_layer_close_btn.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/close_icon_white.svg)" : "url(https://image.donga.com/pc/2022/images/common/share_close.png)"
-    facebook.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/facebook_icon_white.svg)" : "url(../images/facebook_icon.svg)";
-    twitter.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/x_icon_white.svg)" : "url(../images/x_icon.svg)";
-    kakao.style.backgroundImage = container.classList.contains("dark-mode") ? "url(../images/kakao_icon_white.svg)" : "url(../images/kakao_icon.svg)";
-    link_copy.style.background = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray1-100)";
-    link_copy.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-black-100)" : "var(--color-neutral-white-100)";
-    url_txt.style.color = container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-black-100)";
-    url_txt.style.backgroundColor = container.classList.contains("dark-mode") ? "var(--color-neutral-gray1-100)" : "var(--color-neutral-white-100)";
 })
 
 // 문서 내용 ArchieML로 가져오기
-// Google Docs API 클라이언트 초기화
-// gapi.load('client', () => {
-//     gapi.client.init({
-//         apiKey: 'AIzaSyCfwOA1VhTqcSf11TBeDEQr3SEpch0w51Q', // Google Cloud Console에서 생성한 API 키
-//         clientId: '973914274663-mskubufdipnobdj0bv97vp93nbvgn4d7.apps.googleusercontent.com', // Google Cloud Console에서 생성한 클라이언트 ID
-//         discoveryDocs: ['https://docs.googleapis.com/$discovery/rest?version=v1'],
-//         scope: 'https://www.googleapis.com/auth/documents.readonly', // 문서 읽기 권한
-//         plugin_name:'App Name that you used in google developer console API', // 이전 방식 사용때문에 환경 개선안
-//     }).then(() => {
-//         const authInstance = gapi.auth2.getAuthInstance();
-//         if (!authInstance.isSignedIn.get()) {
-//             authInstance.signIn();
-//         }
-//         return gapi.client.docs.documents.get({
-//             documentId: '17wpUtjNytr6i8b_jzznFBMzXQwI5yG3pcOArSD6rVEQ' // 가져올 문서의 ID
-//         });
-//     }).then((response) => {
-//         const documentContent = response.result.body.content; 
-//         let data_entire = "";
-//         for(let i =1; i<documentContent.length; i++){
-//             for(let j =0; j<documentContent[i].paragraph.elements.length; j++){
-//                 data_entire += documentContent[i].paragraph.elements[j].textRun.content
-//             }
-//         }
-//         const data = archieml.load(data_entire) // ArchieML처리
-//         console.log(data); // 가져온 문서 내용을 출력
-//     }).catch(error => {
-//         console.error("Error fetching the document:", error);
-//     });
-// });
+const CLIENT_ID = '973914274663-mskubufdipnobdj0bv97vp93nbvgn4d7.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyDi0Z5yZmNw1_ff2IHfsfACKJRuLyRbhW0';
+const DISCOVERY_DOCS = ["https://docs.googleapis.com/$discovery/rest?version=v1"];
+const SCOPES = "https://www.googleapis.com/auth/documents.readonly";
+const TOKEN_KEY = 'google_oauth_token';
 
-// function handleClientLoad() {
-//     gapi.load('client:auth2', initClient);
-// }
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
 
-// function initClient() {
-//     gapi.client.init({
-//         apiKey: 'AIzaSyCfwOA1VhTqcSf11TBeDEQr3SEpch0w51Q',
-//         clientId: '973914274663-mskubufdipnobdj0bv97vp93nbvgn4d7.apps.googleusercontent.com',
-//         discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
-//         scope: 'https://www.googleapis.com/auth/drive.readonly',
-//         plugin_name:'App Name that you used in google developer console API', // 이전 방식 사용때문에 환경 개선안
-//     }).then(() => {
-//         const authInstance = gapi.auth2.getAuthInstance();
-//         if (!authInstance.isSignedIn.get()) {
-//             authInstance.signIn();
-//         }
-//         return gapi.client.drive.files.get({
-//             fileId: '1lmO3rCywJsdkD1wrrBpvBLUDuAjML_9U',
-//             alt: 'media'
-//         });
-//     }).then((response) => {
-//         const css = response.body;
-//         const style = document.createElement('style');
-//         style.textContent = css;
-//         document.head.appendChild(style);
-//     });
-// }
+function gapiLoaded() {
+    gapi.load('client', initializeGapiClient);
+}
 
-// // 이벤트 리스너를 사용하여 문서가 로드된 후에 함수를 실행
-// document.addEventListener('DOMContentLoaded', handleClientLoad);
+async function initializeGapiClient() {
+    await gapi.client.init({
+        apiKey: API_KEY,
+        discoveryDocs: DISCOVERY_DOCS,
+    });
+    gapiInited = true;
+    maybeEnableButtons();
+}
+
+function gisLoaded() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: '', // defined later
+    });
+    gisInited = true;
+    maybeEnableButtons();
+}
+
+function maybeEnableButtons() {
+    if (gapiInited && gisInited) {
+        const savedToken = localStorage.getItem(TOKEN_KEY);
+        if (savedToken) {
+            tokenClient.callback = async (resp) => {
+                if (resp.error !== undefined) {
+                    throw (resp);
+                }
+                localStorage.setItem(TOKEN_KEY, resp.access_token);
+                await getDocument();
+            };
+            gapi.client.setToken({access_token: savedToken});
+            getDocument().catch(() => {
+                handleAuthClick(); // 토큰이 만료되었거나 오류가 있을 경우 다시 로그인
+            });
+        } else {
+            handleAuthClick(); // 저장된 토큰이 없을 경우 로그인 창을 띄웁니다
+        }
+    }
+}
+
+function handleAuthClick() {
+    tokenClient.callback = async (resp) => {
+        if (resp.error !== undefined) {
+            throw (resp);
+        }
+        localStorage.setItem(TOKEN_KEY, resp.access_token);
+        await getDocument();
+    };
+
+    // 로그인 창을 띄우고 사용자가 로그인 및 권한을 부여하도록 합니다.
+    tokenClient.requestAccessToken({prompt: 'consent'});
+}
+
+function getDocument() {
+    return gapi.client.docs.documents.get({
+        documentId: '17wpUtjNytr6i8b_jzznFBMzXQwI5yG3pcOArSD6rVEQ'
+    }).then((response) => {
+        const documentContent = response.result.body.content; 
+        let data_entire = "";
+        for(let i =1; i<documentContent.length; i++){
+            for(let j =0; j<documentContent[i].paragraph.elements.length; j++){
+                data_entire += documentContent[i].paragraph.elements[j].textRun.content
+            }
+        }
+        const data = archieml.load(data_entire) // ArchieML처리
+        console.log(data); // 가져온 문서 내용을 출력
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    gapiLoaded();
+    gisLoaded();
+});
