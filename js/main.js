@@ -34,6 +34,52 @@ const mouseDown = !isMobile ? "mousedown" : "touchstart";
 const mouseMove = !isMobile ? "mousemove" : "touchmove";
 const mouseUp = !isMobile ? "mouseup" : "touchend";
 
+let MemoNum;
+
+async function fetchDynamoDBData() {
+    try {
+        const response = await fetch('https://ohlkbhm6fnnu2whoeqinlyqcna0vggyc.lambda-url.ap-southeast-2.on.aws/');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        MemoNum = data.count;
+        console.log(`Total memos: ${MemoNum}`);
+
+        // 메모를 화면에 표시
+        data.memos.forEach(memo => {
+            displayMemo(memo);
+        });
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+function displayMemo(memo) {
+    const memoArea = document.querySelector('.memo-area');
+    
+    const memoDiv = document.createElement('div');
+    memoDiv.className = 'memo';
+    memoDiv.style.left = `${memo.positionX}px`;
+    memoDiv.style.top = `${memo.positionY}px`;
+    memoDiv.style.display = 'none';
+
+    memoDiv.innerHTML = `
+        <textarea>${memo.Memo}</textarea>
+        <button class="close-btn">&times;</button>
+        `;
+
+    memoArea.appendChild(memoDiv);
+
+    // 메모 삭제 기능
+    memoDiv.querySelector('.close-btn').addEventListener('click', function() {
+        memoDiv.remove();
+    });
+}
+
+window.onload = fetchDynamoDBData;
+
 //Darkmode용 코드
 const mode_btn = document.querySelector("hero-button");
 const scroll_box = document.querySelectorAll("scroll-box");
@@ -105,91 +151,85 @@ mode_btn.addEventListener("click", () => {
     hero_link.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray2)")
 })
 
-// 문서 내용 ArchieML로 가져오기
-const CLIENT_ID = '973914274663-mskubufdipnobdj0bv97vp93nbvgn4d7.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyDi0Z5yZmNw1_ff2IHfsfACKJRuLyRbhW0';
-const DISCOVERY_DOCS = ["https://docs.googleapis.com/$discovery/rest?version=v1"];
-const SCOPES = "https://www.googleapis.com/auth/documents.readonly";
-const TOKEN_KEY = 'google_oauth_token';
+let memoModeActive = false;
 
-let tokenClient;
-let gapiInited = false;
-let gisInited = false;
-
-function gapiLoaded() {
-    gapi.load('client', initializeGapiClient);
-}
-
-async function initializeGapiClient() {
-    await gapi.client.init({
-        apiKey: API_KEY,
-        discoveryDocs: DISCOVERY_DOCS,
-    });
-    gapiInited = true;
-    maybeEnableButtons();
-}
-
-function gisLoaded() {
-    tokenClient = google.accounts.oauth2.initTokenClient({
-        client_id: CLIENT_ID,
-        scope: SCOPES,
-        callback: '', // defined later
-    });
-    gisInited = true;
-    maybeEnableButtons();
-}
-
-function maybeEnableButtons() {
-    if (gapiInited && gisInited) {
-        const savedToken = localStorage.getItem(TOKEN_KEY);
-        if (savedToken) {
-            tokenClient.callback = async (resp) => {
-                if (resp.error !== undefined) {
-                    throw (resp);
-                }
-                localStorage.setItem(TOKEN_KEY, resp.access_token);
-                await getDocument();
-            };
-            gapi.client.setToken({access_token: savedToken});
-            getDocument().catch(() => {
-                handleAuthClick(); // 토큰이 만료되었거나 오류가 있을 경우 다시 로그인
-            });
-        } else {
-            handleAuthClick(); // 저장된 토큰이 없을 경우 로그인 창을 띄웁니다
-        }
+document.querySelector('.toggle-memo-mode').addEventListener('click', function() {
+    memoModeActive = !memoModeActive;
+    document.querySelector('.memo-area').classList.toggle('memo-mode-active', memoModeActive);
+    
+    if (memoModeActive) {
+        this.textContent = "메모 모드 끄기";
+    } else {
+        this.textContent = "메모";
     }
-}
 
-function handleAuthClick() {
-    tokenClient.callback = async (resp) => {
-        if (resp.error !== undefined) {
-            throw (resp);
-        }
-        localStorage.setItem(TOKEN_KEY, resp.access_token);
-        await getDocument();
-    };
-
-    // 로그인 창을 띄우고 사용자가 로그인 및 권한을 부여하도록 합니다.
-    tokenClient.requestAccessToken({prompt: 'consent'});
-}
-
-function getDocument() {
-    return gapi.client.docs.documents.get({
-        documentId: '17wpUtjNytr6i8b_jzznFBMzXQwI5yG3pcOArSD6rVEQ'
-    }).then((response) => {
-        const documentContent = response.result.body.content; 
-        let data_entire = "";
-        for(let i =1; i<documentContent.length; i++){
-            for(let j =0; j<documentContent[i].paragraph.elements.length; j++){
-                data_entire += documentContent[i].paragraph.elements[j].textRun.content
-            }
-        }
-        const data = archieml.load(data_entire) // ArchieML처리
-        console.log(data); // 가져온 문서 내용을 출력
+    // 메모의 가시성 제어
+    const memos = document.querySelectorAll('.memo');
+    memos.forEach(memo => {
+        memo.style.display = memoModeActive ? 'block' : 'none';
     });
-}
+});
 
-document.addEventListener('DOMContentLoaded', function() {
-    gapiLoaded();
-    gisLoaded();
+document.querySelector('.memo-area').addEventListener('contextmenu', function(event) {
+    if (!memoModeActive) return;
+
+    event.preventDefault();
+
+    if (event.target.closest('.memo') || event.target.classList[0] === 'toggle-memo-mode') {
+        return;
+    }
+
+    const memoArea = event.currentTarget;
+    const x = event.clientX - memoArea.offsetLeft + window.scrollX;
+    const y = event.clientY - memoArea.offsetTop + window.scrollY;
+
+    // 메모 생성
+    const memo = document.createElement('div');
+    memo.className = 'memo';
+    memo.style.left = `${x}px`;
+    memo.style.top = `${y}px`;
+    console.log(MemoNum);
+
+    memo.innerHTML = `
+        <textarea placeholder="메모를 입력하세요..."></textarea>
+        <button class="save-btn">저장</button>
+        <button class="close-btn">&times;</button>
+        `;
+        // <input type="file" class="image-upload" accept="image/*,video/*">
+        // <input type="text" class="video-url" placeholder="동영상 URL 입력">
+
+    memoArea.appendChild(memo);
+
+    memo.querySelector('.save-btn').addEventListener('click', async function() {
+        MemoNum++;
+        const memoContent = memo.querySelector('textarea').value;
+        const data = `MemoNum=${MemoNum}&Memo=${encodeURIComponent(memoContent)}&positionX=${x}&positionY=${y}`;
+    
+        try {
+            const response = await fetch('https://7x4zqeie27wx5nae2l3jamxio40hcbgw.lambda-url.ap-southeast-2.on.aws/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: data,
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const responseData = await response.json();
+            console.log('Memo saved:', responseData.message);
+        } catch (error) {
+            console.error('Error saving memo:', error);
+        }
+    });
+
+    // 메모 삭제 기능
+    memo.querySelector('.close-btn').addEventListener('click', function() {
+        memo.remove();
+    });
+
+    // 메모 클릭시 텍스트 영역이 자동으로 포커스되도록
+    memo.querySelector('textarea').focus();
 });

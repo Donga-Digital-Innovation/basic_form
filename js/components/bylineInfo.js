@@ -19,13 +19,21 @@ class hero_component_Byline_Info extends HTMLElement {
                         margin: 0;
                         font-size: 16px;
                         line-height: 150%;
+                        display: flex;
+                        width: 100%;
                     }
-                    span {
+                    span:nth-child(1) {
                         margin-right: 16px;
                         font-weight: 600;
                         display: inline-block;
                         text-align: left;
+                        width: 82px;
                     } 
+                    span:nth-child(2) {
+                        display: inline-block;
+                        width: calc(100% - 100px);
+                        text-align: left;
+                    }
                     a {
                         color: inherit;
                         text-decoration: none;
@@ -43,8 +51,10 @@ class hero_component_Byline_Info extends HTMLElement {
                 </style>
                 <p>
                     <span>${part}</span>
+                    <span>
                     ${linksHtml}
                     ${names}
+                    </span>
                 </p>
             `;
         this.span = this.shadowRoot.querySelector('span');
