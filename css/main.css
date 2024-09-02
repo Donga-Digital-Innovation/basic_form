@@ -34,6 +34,7 @@ body {position:relative; width: 100%; height:100%;}
 }
 
 .memo {
+    width: 250px;
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
@@ -41,41 +42,58 @@ body {position:relative; width: 100%; height:100%;}
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 80;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .memo textarea {
-    width: 200px;
+    width: 100%;
     height: 100px;
     resize: none;
 }
 
+.memo .toggle-btn,
 .memo .close-btn {
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 10px;
     cursor: pointer;
     background-color: transparent;
     border: none;
     color: red;
-    font-size: 16px;
+    font-size: 25px;
+    line-height: 100%;
 }
 
-.memo .save-btn {
+.memo .save-btn,
+.memo .delete-btn,
+.memo .complete-btn {
     display: block;
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 5px 10px;
-    background-color: #00B5B8; /* 메모 모드 버튼과 동일한 색상 */
     border: none;
+    background-color: #008f91; /* 기본 색상 (녹색) */
     color: white;
     border-radius: 3px;
     cursor: pointer;
-    font-size: 14px;
-    text-align: center;
     width: 100%;
 }
 
+.memo .delete-btn {
+    background-color: #f44336; /* 삭제 버튼 색상 (빨강) */
+    width: 47.5%;
+    margin-right: 5%;
+}
+
+.memo .complete-btn {
+    background-color: #008CBA; /* 완료 버튼 색상 (파랑) */
+    width: 47.5%;
+}
+
 .memo .save-btn:hover {
-    background-color: #008f91; /* 호버 시 약간 어두운 색상 */
+    background-color: #008689; /* 호버 시 약간 어두운 색상 */
 }
 
 /* 추가 */
