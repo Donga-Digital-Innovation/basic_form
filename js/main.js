@@ -104,3 +104,25 @@ mode_btn.addEventListener("click", () => {
     hero_link.setAttribute("border-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-100)" : "var(--color-neutral-gray4)")
     hero_link.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray2)")
 })
+
+
+//article 불러오는 함수
+async function fetchDynamoDBArticleData() {
+    try {
+        const response = await fetch('https://nejcsnqedlknfloylmfdverope0ptezn.lambda-url.ap-southeast-2.on.aws/');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        
+        // 메모를 화면에 표시
+        console.log(data.article_Data[0].Article);
+        const article = archieml.load(data.article_Data[0].Article) // ArchieML처리
+        console.log(article); // 가져온 문서 내용을 출력
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+window.onload = fetchDynamoDBArticleData;
