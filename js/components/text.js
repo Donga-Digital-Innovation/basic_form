@@ -5,12 +5,14 @@ class hero_component_MainText extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['color']; // 관찰할 속성 지정
+        return ['color', 'text']; // 관찰할 속성 지정
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'color' && this.p) {
             this.p.style.color = newValue;
+        } else if(name === 'text' && this.p) {
+            this.p.textContent = newValue;
         }
     }
 
