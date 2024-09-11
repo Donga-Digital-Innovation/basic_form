@@ -105,18 +105,26 @@ mode_btn.addEventListener("click", () => {
     hero_link.setAttribute("hover-color", container.classList.contains("dark-mode") ? "var(--color-neutral-white-50)" : "var(--color-neutral-gray2)")
 })
 
+function stripHTML(html) {
+    html = html.replace(/<\/p>/g, '\n').replace(/<br\s*\/?>/g, '\n');
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    return tempDiv.textContent || tempDiv.innerText || "";
+}
 
 //article 불러오는 함수
 async function fetchDynamoDBArticleData() {
     try {
-        const ProjectName = "basic_form"
+        const ProjectName = "cosmetic"
         const response = await fetch(`https://nejcsnqedlknfloylmfdverope0ptezn.lambda-url.ap-southeast-2.on.aws/?ProjectName=${ProjectName}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
         
-        const article = archieml.load(data.article_Data[0].Article) // ArchieML처리
+        console.log(data.article_Data[0].Article)
+        console.log(stripHTML(data.article_Data[0].Article))
+        const article = archieml.load(stripHTML(data.article_Data[0].Article)) // ArchieML처리
         main_text[0].setAttribute("text", article['내용1']);
         console.log(article); // 가져온 문서 내용을 출력
 
